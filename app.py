@@ -41,4 +41,4 @@ if uploaded_file is not None:
         # Display model accuracies (without visualization)
         st.write("## Model Accuracies")
         for model_name, accuracy in model_accuracies.items():
-            st
+            st.write(f"{model_name}: {accuracy}")
