@@ -2,6 +2,7 @@ import json
 # import urllib.request
 import numpy as np
 import pickle as pk
+from pipeline import pipeline
 
 import tensorflow as tf
 global graph, model
