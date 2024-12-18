@@ -2,9 +2,8 @@ import streamlit as st
 from PIL import Image
 import os
 from os.path import join, dirname, realpath
-import matplotlib.pyplot as plt 
 
-from pipeline import pipeline 
+from pipeline import pipeline
 
 UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'static/uploads/')
 ALLOWED_EXTENSIONS = {'png', 'PNG', 'jpg', 'JPG', 'jpeg', 'JPEG', 'gif', 'GIF'}
@@ -33,22 +32,13 @@ if uploaded_file is not None:
     # Run the pipeline
     if st.button("Assess"):
         with st.spinner("Assessing..."):
-            model_results, model_accuracies = pipeline.pipe(filepath) 
+            model_results, model_accuracies = pipeline.pipe(filepath)
 
         # Display the results
         st.write("## Assessment Results")
         st.write(model_results)  
 
-        # Display model accuracies
+        # Display model accuracies (without visualization)
         st.write("## Model Accuracies")
-
-        # Create a bar chart
-        fig, ax = plt.subplots()
-        model_names = list(model_accuracies.keys())
-        accuracies = list(model_accuracies.values())
-        ax.bar(model_names, accuracies)
-        ax.set_ylabel("Accuracy")
-        ax.set_title("Accuracy of Models")
-
-        # Display the chart in Streamlit
-        st.pyplot(fig)
+        for model_name, accuracy in model_accuracies.items():
+            st
